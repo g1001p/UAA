@@ -3,6 +3,11 @@ FROM 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego
 #RUN apt-get update
 #RUN yum  -y update
 #COPY jdk1.8.0_91 /opt/jdk1.8.0_91
+=======
+FROM 1and1internet/ubuntu-16
+#RUN apt-get update
+#RUN yum  -y update
+COPY jdk1.8.0_91 /opt/jdk1.8.0_91
 COPY tomcat/apache-tomcat-8.0.35 /opt/tomcat
 #COPY tomcat/setenv.sh /opt/tomcat/bin
 COPY tomcat/server.xml /opt/tomcat/conf
