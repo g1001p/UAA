@@ -1,0 +1,210 @@
+---
+# Cloud Foundry 2012.02.03 Beta
+# Copyright (c) [2009-2012] VMware, Inc. All Rights Reserved.
+#
+# This product is licensed to you under the Apache License, Version 2.0 (the "License").
+# You may not use this product except in compliance with the License.
+#
+# This product includes a number of subcomponents with
+# separate copyright notices and license terms. Your use of these
+# subcomponents is subject to the terms and conditions of the
+# subcomponent's license, as noted in the LICENSE file.
+
+# customize static asset source, provides control over visual branding
+# (defaults to /resources/oss)
+assetBaseUrl: /resources/nurego
+
+#tiles:
+#  - name: Pivotal Network
+#    login-link: https://network.gopivotal.com/login
+#    image: /resources/pivotal/images/network-logo-gray.png
+#    image-hover: /resources/pivotal/images/network-logo-teal.png
+#  - name: Pivotal Web Services
+#    login-link: https://console.10.244.0.34.xip.io
+#    image: /resources/pivotal/images/pws-logo-gray.png
+#    image-hover: /resources/pivotal/images/pws-logo-teal.png
+#  - name: Pivotal Partners
+#    login-link: https://partners.gopivotal.com/login
+#    image: /resources/pivotal/images/partners-logo-gray.png
+#    image-hover: /resources/pivotal/images/partners-logo-teal.png
+
+links:
+  # Custom self service links (will only be displayed if selfServiceLinksEnabled is true)
+  # If selfServiceLinksEnabled is true and these custom links are not provided then the Login Server
+  # will use internal links.
+  #signup: http://some-oauth-client.example.com/signup
+  #passwd: http://some-other-self-service-server.com/forgot_password
+
+#notifications:
+#  url: http://localhost:3001
+logout:
+  redirect:
+    url: /login
+    parameter:
+      disable: false
+      whitelist:
+        - https://develop.nurego.com/login
+
+login:
+  # Enable create account and forgot password links on the Login Server (enabled by default)
+  selfServiceLinksEnabled: false
+  # Enable sending invitations on the Login Server (disabled by default)
+  # invitationsEnabled: true
+  # the brand to use for password reset emails and page titles
+  # (defaults to oss)
+  #brand: pivotal
+  #base URL that the login server can be reached at
+  url: https://uaa-develop.nurego.com/login
+
+  # Needed for IdP initiated signon
+  defaultTargetUrl: https://develop.nurego.com/
+
+  # SAML Key Configuration
+  # The location and credentials of the certificate for this SP
+  # See README.md for details on how to create this.
+  serviceProviderKey: |
+      -----BEGIN RSA PRIVATE KEY-----
+      Proc-Type: 4,ENCRYPTED
+      DEK-Info: DES-EDE3-CBC,D6ACA4EB088D33DD
+      q5IFogdSMtwU+V7U5jKzlKE7qRXZluplw4BrMd8GuMAfE77qP2q2lS+sQc+LUgdK
+      oydcCauX2IAepGNUMPKm6mFg3BIFPbjPcQ3qQsZMAHe6wfwYjYPNMv0ya/hV80/K
+      o3aWv5lzIP23blGmaYr8Ib9WhYlC+fOVCS3JXFR6To7svyDx1SaCpdjkqZgCsVeg
+      OdiqlDrViidnEWmVNaVPPer9Gc2s4YZ5+doc/jb9V5zb95IB27Nc2D7bqiltOORL
+      AdhQRIeXstsDvF6O4FieBnOHWg5Vvi5jk34DpYtFfy+9+Idq57PQkpPgC7cfcGrx
+      mH/l1h0hZiknIbGPuZofZv8XVk8wlVBSEwnI0reNpAwwxjdHjh1w98+KvP62k8NJ
+      HFBbzSsOK8lTHPMVLGzGOxUNO1o/BiTguLM1/5N6FNAr7vY2Gb/LsTiFaU+EEHZI
+      iHZZtyJtzZWXrXOGT8rcXPgYInsJbf528/64eMrx0mJvrkvo18SclJhULuK/qPed
+      NTtFPINZSjGZ0XVYmiNbmz/1LIXvFVtgww3JSx/8MF8V22LIWKvnPE00yhgxVw0K
+      Z4Pr4MSdHJB0gu0Beqq7s5DFY3WOFvKEh81Nj7E3UpXKp9CINknw9e2mLYC7RvLA
+      +BMNzQpRq/0XF8So/IP9i+3KefkaA0IARROjOAVyYDqyNqB+oo4HWHq4efyHIFDU
+      eSBuAsv1Datw8X4XGqMrXP4xaEj+NFVIhUeY2846ujR1E0oTCuZKAdNyQcInZM9y
+      XeRgTli9ZLo5BLtqa2tulOSRoCB/GT9db6V6Krs4qqstMl9lYL3NYXPqzRjiv5Dv
+      OEP5Vy73ab64xohjS/2ctZU8O9vI5jGrXMAYNsF3Wc25EraG3HGBh2maLD0plwsJ
+      Cy2EefbYotPOLGKEGH97325F+1+g/mXgfShNWdJcGPlXTYQvhEOvdh35Y1nMJ2RG
+      JFWECAC3xso/q94mnFLsNU7VEH838kb/HqvmxGf5hdVklv2oE3JRphs5dk8mqfOh
+      78e6eYnl9B1lueDA8sednItJjnajpr1c4WeYqbqRuVMPXzCpI9zQB9NpyvMdS0lV
+      pxKXs6jKOejP7dLTVnVa3J/8jwZMdo5sld8cckQx7fn5hw3onqTJIhEzhEysXgmB
+      PdXMDEt+uAs0fHBe4wV4oYyWr7igooL0viOO1pe2XexwQa8ftc4xuoschRENsi/H
+      ADq1A9uftXcuL4NEKsks3G9mTbBZ7R3GKrGsL8G9UI0nbpEUmgeZBNXC03zJFv2g
+      s2Yv9Bz5skWjY0ssWLc9Uhn3XL1iSQcp6qvyVH4Dud7IyiwJUoNnmDtNPuJnkuLX
+      XuB3YMhuYCCo98smsXC0MZM0Ka9WsPtbIpFpXLANZWgpyt9B5CzzsEdHvgniWjO4
+      jrL6Jbe4YJZoRjmc4sQM0Xg+xMXOLVI1wL91FazRDrmFmr2f8OvFu1DtDVElnviP
+      r7mQLRZWj2FsurqswoJej6j5zmVLhwDMNMa2mlonZTdp07c+UasuyqRNYiagrsx9
+      //QO6X1C3dm2Euptw53OJDioKwxJ13UAedh+maV2sKni/hsaqUgWtA==
+      -----END RSA PRIVATE KEY-----
+      
+  serviceProviderKeyPassword: password
+  serviceProviderCertificate: |
+      -----BEGIN CERTIFICATE-----
+      MIIDPjCCAiYCCQChkzs3/YlBtTANBgkqhkiG9w0BAQUFADBhMQswCQYDVQQGEwJV
+      UzELMAkGA1UECBMCQ0ExEjAQBgNVBAcTCVNhbiBSYW1vbjELMAkGA1UEChMCR0Ux
+      DzANBgNVBAsTBlByZWRpeDETMBEGA1UEAxQKc2FtbF9sb2dpbjAeFw0xNDEyMDUy
+      MzAzNTBaFw0yNDEyMDIyMzAzNTBaMGExCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJD
+      QTESMBAGA1UEBxMJU2FuIFJhbW9uMQswCQYDVQQKEwJHRTEPMA0GA1UECxMGUHJl
+      ZGl4MRMwEQYDVQQDFApzYW1sX2xvZ2luMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+      MIIBCgKCAQEAzqTZAK5E/8M0fSpXoCoHr2bAq7MNWy5Mf4OUSsiXUCKKyqfo/xbf
+      qcY8ewQt+qHn9aGLpmR6yVWyLRcW7306Mj36FEPsRL7mSLH1cZowQGHHUkgqBM2w
+      deEPc2g91kQdTwASNSYIGGEjF8/JJMICp3XaYlGAbj6VyGfxQZotWkNmogFnzJ62
+      WpLixm3ihv3JOoUztoO+bdZne4PxBgQ828oNY19hXFRcEEI2qhPMjSIcjpEjPxny
+      tfdBV9Yu+oYJw26FNWdypo4K8004bH1rJAYht60Cp5oLUVXiAFfruDN+igV6kR7/
+      xuWEk1x0kWISmMsSlMKMJoIYMm22kYFYjQIDAQABMA0GCSqGSIb3DQEBBQUAA4IB
+      AQCaTgUybgcKJCE+a2WRBD+sgsrOF3ec4mFyULummRI7Vcd+qyMLodsKgu4/B30A
+      8BoaP5Z2RZ59nYj8ao5uovOWI5ZgYR7LO4Wj8hxfn7Yl9LpfK3IdUCLDjFqgvk8y
+      DuB6r29LGyVp2de5cyL4nFhAF8qptN4UbhpxfABs+nkYsAbTCR3HVgicyXS6uOpW
+      0tRysnFngUkfoJP62VI5ud8zaMl6ii7heLwBV0Wp47xFgo2p6OX8fF47UpSZGer1
+      rFmyVIeGIFBAJLQb5FmnIMA2BjhZ5X9i2BKmiz5Kyxw0GraEsbOXina6QSkFWf7V
+      6dIzQlHwMpR9admAXwsyoiha
+      -----END CERTIFICATE-----
+      
+
+  # SAML - The entity base url is the location of this application
+  # (The host and port of the application that will accept assertions)
+  entityBaseURL: https://uaa-develop.nurego.com
+  # The entityID of this SP
+  entityID: nurego-dev-uaa     
+  saml:
+    #Default nameID
+    nameID: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified'
+    #Default assertionConsumerIndex
+    assertionConsumerIndex: 0
+    #Local/SP metadata - sign metadata
+    signMetaData: true
+    #Local/SP metadata - requests signed
+    signRequest: true
+    #Local/SP metadata - sign metadata
+    socket:
+      # URL metadata fetch - pool timeout
+      connectionManagerTimeout: 10000
+      # URL metadata fetch - read timeout
+      soTimeout: 10000
+#BEGIN SAML PROVIDERS
+    providers:
+#      okta-local:
+#        idpMetadata: sample-okta-localhost.xml
+#        nameID: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+#        assertionConsumerIndex: 0
+#        metadataTrustCheck: true
+#        showSamlLoginLink: true
+#        linkText: 'Okta Preview 1'
+#        iconUrl: 'http://link.to/icon.jpg'
+#      okta-local-2:
+#        idpMetadata: |
+#          <?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://www.okta.com/k2lw4l5bPODCMIIDBRYZ"><md:IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"><md:KeyDescriptor use="signing"><ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:X509Data><ds:X509Certificate>MIICmTCCAgKgAwIBAgIGAUPATqmEMA0GCSqGSIb3DQEBBQUAMIGPMQswCQYDVQQGEwJVUzETMBEG
+#          A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+#          MBIGA1UECwwLU1NPUHJvdmlkZXIxEDAOBgNVBAMMB1Bpdm90YWwxHDAaBgkqhkiG9w0BCQEWDWlu
+#          Zm9Ab2t0YS5jb20wHhcNMTQwMTIzMTgxMjM3WhcNNDQwMTIzMTgxMzM3WjCBjzELMAkGA1UEBhMC
+#          VVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTALBgNVBAoM
+#          BE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRAwDgYDVQQDDAdQaXZvdGFsMRwwGgYJKoZIhvcN
+#          AQkBFg1pbmZvQG9rdGEuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeil67/TLOiTZU
+#          WWgW2XEGgFZ94bVO90v5J1XmcHMwL8v5Z/8qjdZLpGdwI7Ph0CyXMMNklpaR/Ljb8fsls3amdT5O
+#          Bw92Zo8ulcpjw2wuezTwL0eC0wY/GQDAZiXL59npE6U+fH1lbJIq92hx0HJSru/0O1q3+A/+jjZL
+#          3tL/SwIDAQABMA0GCSqGSIb3DQEBBQUAA4GBAI5BoWZoH6Mz9vhypZPOJCEKa/K+biZQsA4Zqsuk
+#          vvphhSERhqk/Nv76Vkl8uvJwwHbQrR9KJx4L3PRkGCG24rix71jEuXVGZUsDNM3CUKnARx4MEab6
+#          GFHNkZ6DmoT/PFagngecHu+EwmuDtaG0rEkFrARwe+d8Ru0BN558abFb</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</md:NameIDFormat><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://pivotal.oktapreview.com/app/pivotal_pivotalcfstaging_1/k2lw4l5bPODCMIIDBRYZ/sso/saml"/><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://pivotal.oktapreview.com/app/pivotal_pivotalcfstaging_1/k2lw4l5bPODCMIIDBRYZ/sso/saml"/></md:IDPSSODescriptor></md:EntityDescriptor>#      saml:
+#        nameID: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+#        assertionConsumerIndex: 0
+#        metadataTrustCheck: true
+#        showSamlLoginLink: true
+#        linkText: 'Okta Preview 2'
+#      vsphere.local:
+#        idpMetadata: https://win2012-sso2.localdomain:7444/websso/SAML2/Metadata/vsphere.local
+#        nameID: urn:oasis:names:tc:SAML:2.0:nameid-format:persistent
+#        assertionConsumerIndex: 0
+#        showSamlLoginLink: true
+#        linkText: 'Log in with vCenter SSO'
+#      openam-local:
+#        idpMetadata: https://localhost:8440/openam/saml2/jsp/exportmetadata.jsp?entityid=https://localhost:8440/openam
+#        nameID: urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+#        assertionConsumerIndex: 0
+#        signMetaData: false
+#        signRequest: false
+#        showSamlLoginLink: true
+#        linkText: 'Log in with OpenAM'
+#END SAML PROVIDERS
+
+  authorize:
+    url: https://uaa-develop.nurego.com/login/oauth/authorize
+
+uaa:
+  # The hostname of the UAA that this login server will connect to
+  url: https://uaa-develop.nurego.com
+  token:
+    url: https://uaa-develop.nurego.com/oauth/token
+  approvals:
+    url: https://uaa-develop.nurego.com/approvals
+  login:
+    url: https://uaa-develop.nurego.com/authenticate
+
+# The secret that this login server will use to authenticate to the uaa
+LOGIN_SECRET: da979f3a-109b-4e27-9e86-282012d7df6d   
+
+# Google Analytics
+#analytics:
+#  code: secret_code
+#  domain: example.com
+
+smtp:
+  host: localhost
+  port: 2525
+  user:
+  password:
