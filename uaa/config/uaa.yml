@@ -1,0 +1,72 @@
+
+
+name: uaa
+
+database:
+  url: jdbc:postgresql://${PGHOST}:${PGPORT}/${UAADB}
+  username: ${UAAUSER}
+  password: ${UAAPASS}
+
+spring_profiles: postgresql
+
+logging:
+  config: /opt/uaa/config/log4j.properties
+
+
+jwt:
+  token:
+    signing-key: |
+        -----BEGIN RSA PRIVATE KEY----- MIIEpAIBAAKCAQEAtkSKQ9wzWzSNR67yu+hXOTe7wKC4x5EmzMm8MYYGPt50WeNv yrxWLxaOkri7mCt8y5Laf4qcQYXWEKzDTsVZ9IcvXn7SHNTjtFQvlZwvN95j1c+H Vrk75ZGtjbUFzMyaG899yQRWaL8GKYfEH2NQYaS2V4vvmOhZ9CGIw9Em9t0ye1yD mgSgrD9iQW7fa1gwhTDNF2aIovkiNULU1eYuFPtNTEoFhcJlg33rHSipa9ILU0Da QDnuaked0OjLZbPeNdTmBr2Kjp53GEgG/IuILvivJHaagH/egZn1lpDYMEmNw29D XdXAkNU/CrbgXf1Ka/mX8WOqZ3m5be3YaypfgQIDAQABAoIBABPSOlMM5Ezb1y1f eigzKSEgzXsyP0X8pAKLQbsE/zLhEDgiQqsCdkDirBiKnGP8/rJIwxgxo7KAcnoX v5mWXqT3+o/FLOZTxHt82Dvl40CpH6RF0Er/E+NwRzZs5DeUXIH/u4cbwKXdeDcV +58KNtiXh/jXT/QJ+JZS+0OIQDuCPV2K/PvkjGEwlBJ9mZNCT+C9eTfoHhAmTQbP xADdX1RvIGP48A39sve1IOmXIGTkEinmidjvkz3qPygWFRL0w52mTENwa+T8XQIh mXbp5qG2x0XApwQCJQWGnvCPNWMVM+nGlf14oULjYfwfp7RSPsRcu1dMHdboeSkR uV9BYB0CgYEA7u8SJnkQjYGLRqoKOHB/Dwx+JOs1xG/U+cGUOJZzUDqFxlsrT3Tc FxoUcXlx4WPR59scV4SD5/GN/xTq8OgdlbAWax/XwPCQfqUIYwI6Mi2hGrZAk866 psicRM51kbI82VnKTPC4cnAaEGDe9q4tDoNKKkajwwSHahSgymNzEQcCgYEAw0lS yTcrKnz2FTspvdR0Oi6wymP2N+M+HyUGegeUewJZeue7rfNh6Fljaxoj1ZKGulVP qMqH3K3nmEG/hudplB5ewdEkPXGmBNxT8yBhKC9794zIDFiTboxIo2m9dHWNJ2R9 bGJ1v8uUCMktqNEKfh+ETKfcD11CjVzcd2td0TcCgYBIlX3ZDCwYIMNzqxJBxQME SlJD2uRRkXuMh98ENchAFhcvg+CrWZ/GsNiHBFKxGsbYfXqlp47+tiXh2LPqjUj3 gS++SUUcyrfKkU3z7ehJ+AyZ9cW2YTXYltbKHEIhCZlsmddX+kS+FwoD8bmqDI2J fB7aquzywHx2oF+cPAvnnwKBgQCcNNx5gx2OIOKeXPKom3ZUy+AyI/9g+O5J703c 8o88TcbRXudq3xFjz4yMsR4Uyd3m0jKj60z9okVsLrtK53Q2PIzDL81zMKMBpFOq WC4e/MyGWR/zcC6N8LxxqjUXIKhF6EXDGobhYbAJzxIsxPlFpWQoBOUrjQedF7hp 9YHXxQKBgQC87s/fwtOGzvrl3IxyOYvuXwZYmbyIZJfqxqItmdvLLKwfce+7TDXH yaSSqaVeOtryY3/8fqI5Mfd2TMAtvXywOjc2a0UuIIbeTwOW9xNqyPH5jMwuIrho uaceya/vo0fmQGviAbCxljtXV4CCO+59CMqJ08FpUvZNSVFfRboOJg== -----END RSA PRIVATE KEY-----
+    verification-key: |
+        -----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtkSKQ9wzWzSNR67yu+hX OTe7wKC4x5EmzMm8MYYGPt50WeNvyrxWLxaOkri7mCt8y5Laf4qcQYXWEKzDTsVZ 9IcvXn7SHNTjtFQvlZwvN95j1c+HVrk75ZGtjbUFzMyaG899yQRWaL8GKYfEH2NQ YaS2V4vvmOhZ9CGIw9Em9t0ye1yDmgSgrD9iQW7fa1gwhTDNF2aIovkiNULU1eYu FPtNTEoFhcJlg33rHSipa9ILU0DaQDnuaked0OjLZbPeNdTmBr2Kjp53GEgG/IuI LvivJHaagH/egZn1lpDYMEmNw29DXdXAkNU/CrbgXf1Ka/mX8WOqZ3m5be3Yaypf gQIDAQAB -----END PUBLIC KEY-----
+
+
+issuer.uri: http://uaa-dev-new.nurego.com:8080
+
+oauth:
+
+
+  client:
+
+    autoapprove:
+      - portal
+      - login
+
+  clients:
+
+    portal:
+      override: true
+      id: portal
+      scope: scim.write,scim.read,openid,tokens.read,tokens.write
+      authorities: scim.write,scim.read,openid,password.write,uaa.admin
+      secret: portalsecret
+      authorized-grant-types: authorization_code,client_credentials,password,refresh_token
+      access-token-validity: 86400
+      refresh-token-validity: 86400
+      redirect-uri: http://uaa-dev-new.nurego.com:8080/users/confirm_login,https://test-develop.nurego.com/users/confirm_login
+    account_manager:
+      id: account_manager
+      scope: scim.write,scim.read,openid,clients.write
+      authorities: scim.write,scim.read,openid,clients.write,uaa.admin
+      secret: somesecret
+      authorized-grant-types: client_credentials,password
+      access-token-validity: 3600
+      refresh-token-validity: 86400
+
+
+    admin:
+      authorized-grant-types: client_credentials
+      authorities: clients.read,clients.write,clients.secret,uaa.admin
+      id: admin
+      secret: weareemc
+
+
+scim:
+  userids_enabled: false
+
+
+  user.override: true
+
+  users:
+    - admin|weareemc|scim.write,scim.read,openid,cloud_controller.admin
+

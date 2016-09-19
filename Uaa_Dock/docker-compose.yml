@@ -1,0 +1,12 @@
+version: '2'
+services:
+  app:
+    image: "781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego"
+    volumes:
+      - /home/admin/Test/Uaa_Dock/config:/opt/uaa/config
+      -  /home/admin/Test/Uaa_Dock/tomcat/setenv.sh:/mnt/setenv.sh
+#volumes:
+ # config:
+#    external: true
+ # tomcat/setenv.sh: 
+  #  external: true
