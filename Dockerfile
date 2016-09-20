@@ -1,4 +1,4 @@
-FROM 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego
+FROM 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego:2
 #RUN apt-get update
 #RUN yum  -y update
 #COPY jdk1.8.0_91 /opt/jdk1.8.0_91
