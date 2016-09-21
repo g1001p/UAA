@@ -4,6 +4,7 @@ FROM 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego:2
 #COPY jdk1.8.0_91 /opt/jdk1.8.0_91
 #RUN apt-get update
 #RUN yum  -y update
+RUN rm -f /opt/tomcat/webapps/uaa.war
 #COPY jdk1.8.0_91 /opt/jdk1.8.0_91
 COPY tomcat/apache-tomcat-8.0.35 /opt/tomcat
 #COPY tomcat/setenv.sh /opt/tomcat/bin
