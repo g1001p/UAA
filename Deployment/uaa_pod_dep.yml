@@ -28,7 +28,7 @@ spec:
         app: uaa
     spec:
       containers:
-      - image: 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego
+      - image: 781127743430.dkr.ecr.us-east-1.amazonaws.com/nurego/uaa_nurego:ZZZ
         name: uaa
         command: [ "/bin/sh","-c" ]
         args: [ "cp /mnt/server.xml /opt/tomcat/conf/;/opt/tomcat/bin/startup.sh;sleep infinity" ]
