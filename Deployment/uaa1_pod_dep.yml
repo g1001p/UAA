@@ -44,9 +44,9 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: uaa.conf
+          name: uaa1.conf
       - name: config-set
         configMap:
-          name: uaa.set
+          name: uaa1.set
       nodeSelector:
         kubernetes.io/hostname: ip-172-20-0-243.ec2.internal
